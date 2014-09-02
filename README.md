@@ -1,4 +1,4 @@
-## name of project
+## Amazon
 ### Code Badges
 build status icon
 coverage status icon
@@ -38,9 +38,6 @@ Collection 2
 $ npm install
 $ npm test
 ```
-
-### Contributors
-- [Chyld Medford](https://github.com/chyld)
 
 ### License
 [MIT](LICENSE)
