@@ -12,6 +12,7 @@
       ul.nav.navbar-nav.navbar-right
         if user
           li: a(href='/products'): i.fa.fa-tags.fa-lg &nbsp Products
+          li: a(href='/cart'): i.fa.fa-shopping-cart.fa-lg &nbsp Cart
           li: a(href='/profile'): i.fa.fa-user.fa-lg &nbsp Profile
           li
             form.navbar-form(method='post', action='/logout')

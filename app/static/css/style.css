@@ -1,1 +1,1 @@
-body{background-image:url(/img/first_aid_kit.png)}a.thumbnail{background-size:cover;height:300px;width:300px}a.photo.thumbnail{background-size:cover;height:100px;width:100px}img{Max-height:100px;max-width:100px}
+body{background-image:url(/img/first_aid_kit.png)}a.thumbnail{background-size:cover;height:300px;width:300px}a.photo.thumbnail{background-size:cover;height:100px;width:100px}img{Max-height:100px;max-width:100px}#products tbody tr>td:nth-child(2){background-color:#ffffff;background-size:contain;background-repeat:no-repeat;height:100px}
