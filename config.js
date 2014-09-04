@@ -38,4 +38,9 @@ config.instagram = {
   callbackUrl   : 'http://sarahvm.com:3333/auth/instagram/callback'
 };
 
+config.stripe = {
+  publishKey      : 'pk_test_AXxUCtlmGSwxBRMIqQR2J3y0',
+  secretKey       : process.env.STRIPE_SECRET
+};
+
 module.exports = config;

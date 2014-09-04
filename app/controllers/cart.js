@@ -1,6 +1,7 @@
 'use strict';
 
-var Product = require('../models/product');
+var Product = require('../models/product'),
+    config  = require('../../config');
 
 exports.add = function(req, res){
   Product.findById(req.body.productId, function(err, product){
@@ -28,6 +29,34 @@ exports.index = function(req, res){
   tax = subtotal * 0.075;
   total = subtotal + tax;
 
-  res.render('cart/index', {ids:Object.keys(products), products:products, subtotal:subtotal, tax:tax, total:total});
+  req.session.totalCents = Math.round(total * 100);
+  req.session.save(function(){
+
+    res.render('cart/index', {key:config.stripe.publishKey, ids:Object.keys(products), products:products, subtotal:subtotal, tax:tax, total:total});
+  });
 };
 
+exports.destroy = function(req, res){
+  req.session.cart = [];
+  req.session.save(function(){
+    res.redirect('/cart');
+  });
+};
+
+exports.purchase = function(req, res){
+  var stripe      = require('stripe')(config.stripe.secretKey),
+      stripeToken = req.body.stripeToken;
+
+  stripe.charges.create({
+    amount: req.session.totalCents,
+    currency: 'usd',
+    card: stripeToken,
+    description: req.user.email || 'anonymous'
+  }, function(err, charge) {
+    req.session.cart = [];
+    req.session.save(function(){
+      req.flash('success', 'Congratulations, you just purcahsed some stuff!');
+      res.redirect('/profile');
+    });
+  });
+};

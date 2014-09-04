@@ -55,6 +55,8 @@ module.exports = function(app, express){
   app.get('/products', products.index);
   app.post('/cart', cart.add);
   app.get('/cart', cart.index);
+  app.delete('/cart', cart.destroy);
+  app.post('/charge', cart.purchase);
 
   console.log('Express: Routes Loaded');
 
