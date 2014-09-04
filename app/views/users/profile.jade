@@ -1,0 +1,18 @@
+extends ../shared/template
+block content
+  .row
+    .col-xs-12
+      h2: a(href='/profile/edit')= user.email || 'anonymous'
+  .row
+    .col-xs-2
+      a.thumbnail(href='/profile/edit')
+        img(src=user.photo)
+    .col-xs-10
+  .row
+    .col-xs-11.col-xs-offset-1
+      h2 Age &nbsp
+        = user.age
+
+
+block scripts
+
